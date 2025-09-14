@@ -638,6 +638,173 @@
             cursor: pointer;
         }
 
+        .upload-section {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px auto;
+            max-width: 800px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .upload-title {
+            text-align: center;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        .upload-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .form-group label {
+            font-weight: 500;
+        }
+
+        .form-control {
+            padding: 12px 15px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(0, 0, 0, 0.2);
+            color: var(--text-color);
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        .submit-btn {
+            padding: 12px 25px;
+            background: var(--gradient);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            align-self: flex-start;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .file-list {
+            margin-top: 30px;
+        }
+
+        .file-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .file-name {
+            font-weight: 500;
+        }
+
+        .file-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .file-download {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .file-delete {
+            color: var(--accent-color);
+            cursor: pointer;
+        }
+
+        /* Estilos para el área de arrastrar y soltar */
+        .file-drop-area {
+            border: 2px dashed rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+            padding: 25px;
+            text-align: center;
+            transition: var(--transition);
+            cursor: pointer;
+            position: relative;
+        }
+
+        .file-drop-area:hover, .file-drop-area.dragover {
+            border-color: var(--primary-color);
+            background: rgba(143, 148, 251, 0.1);
+        }
+
+        .file-drop-area i {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        .file-drop-text {
+            margin-bottom: 15px;
+        }
+
+        .file-input {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .file-preview {
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        .file-preview-item {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 10px 15px;
+            border-radius: 6px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .file-preview-name {
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .file-preview-size {
+            font-size: 0.8rem;
+            color: #888;
+        }
+
+        .file-preview-remove {
+            color: var(--accent-color);
+            cursor: pointer;
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+        }
+
 
         /* Responsive Design */
         @media (max-width: 992px) {
@@ -1043,7 +1210,7 @@
         </div>
     </section>
  <!-- Sección para subir archivos -->
-      <section id="subir-archivo" class="section">
+<section id="subir-archivo" class="section">
         <h2 class="section-title">Subir Nuevos Archivos</h2>
         
         <div class="upload-section">
@@ -1051,13 +1218,8 @@
             
             <form id="uploadForm" class="upload-form">
                 <div class="form-group">
-                    <label for="fileName">Nombre del archivo:</label>
+                    <label for="fileName">Nombre para mostrar:</label>
                     <input type="text" id="fileName" class="form-control" placeholder="Ej: Guía de estudio Semana 1" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="fileContent">Contenido del archivo:</label>
-                    <textarea id="fileContent" class="form-control" rows="6" placeholder="Escribe el contenido del archivo aquí..." required></textarea>
                 </div>
                 
                 <div class="form-group">
@@ -1072,7 +1234,27 @@
                         <option value="6">Semana 6</option>
                         <option value="7">Semana 7</option>
                         <option value="8">Semana 8</option>
+                         <option value="8">Semana 9</option>
+                          <option value="8">Semana 10</option>
+                           <option value="8">Semana 11</option>
+                            <option value="8">Semana 12</option>
+                             <option value="8">Semana 13</option>
+                              <option value="8">Semana 14</option>
+                               <option value="8">Semana 15</option>
+                                <option value="8">Semana 16</option>
                     </select>
+                </div>
+                 
+                <div class="form-group">
+                    <label>Seleccionar archivo:</label>
+                    <div class="file-drop-area" id="fileDropArea">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <p class="file-drop-text">Arrastra y suelta tu archivo aquí</p>
+                        <p>o</p>
+                        <button type="button" class="card-btn" onclick="document.getElementById('fileInput').click()">Seleccionar archivo</button>
+                        <input type="file" id="fileInput" class="file-input" required>
+                    </div>
+                    <div class="file-preview" id="filePreview"></div>
                 </div>
                 
                 <button type="submit" class="submit-btn">Subir Archivo</button>
@@ -1088,6 +1270,7 @@
             </div>
         </div>
     </section>
+
 
     <!-- Sección de semana individual (inicialmente oculta) -->
    <section id="week1" class="week-content">
@@ -1187,7 +1370,8 @@
     <script>
 
 // Almacenamiento de archivos (simulado)
-        let uploadedFiles = JSON.parse(localStorage.getItem('uploadedFiles')) || [];
+           let uploadedFiles = JSON.parse(localStorage.getItem('uploadedFiles')) || [];
+        let currentFile = null;
 
         // Mostrar/ocultar secciones
         function showSection(sectionId) {
@@ -1262,6 +1446,8 @@
             
             // Actualizar lista de archivos al cargar la página
             updateFileList();
+            // Configurar eventos de arrastrar y soltar
+            setupDragAndDrop();
         });
 
         // Manejar cambios en el hash de la URL
@@ -1274,6 +1460,100 @@
                 }
             }
         });
+
+           // Configurar eventos de arrastrar y soltar
+        function setupDragAndDrop() {
+            const fileDropArea = document.getElementById('fileDropArea');
+            const fileInput = document.getElementById('fileInput');
+            const filePreview = document.getElementById('filePreview');
+            
+            // Eventos para arrastrar y soltar
+            ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+                fileDropArea.addEventListener(eventName, preventDefaults, false);
+            });
+            
+            function preventDefaults(e) {
+                e.preventDefault();
+                e.stopPropagation();
+            }
+            
+            // Resaltar área de drop
+            ['dragenter', 'dragover'].forEach(eventName => {
+                fileDropArea.addEventListener(eventName, highlight, false);
+            });
+            
+            ['dragleave', 'drop'].forEach(eventName => {
+                fileDropArea.addEventListener(eventName, unhighlight, false);
+            });
+            
+            function highlight() {
+                fileDropArea.classList.add('dragover');
+            }
+            
+            function unhighlight() {
+                fileDropArea.classList.remove('dragover');
+            }
+            
+            // Manejar drop
+            fileDropArea.addEventListener('drop', handleDrop, false);
+            
+            function handleDrop(e) {
+                const dt = e.dataTransfer;
+                const files = dt.files;
+                
+                if (files.length) {
+                    handleFiles(files);
+                }
+            }
+            
+            // Manejar selección de archivo
+            fileInput.addEventListener('change', function() {
+                handleFiles(this.files);
+            });
+        }
+        
+        // Manejar archivos seleccionados
+        function handleFiles(files) {
+            if (files.length > 0) {
+                currentFile = files[0];
+                updateFilePreview(currentFile);
+            }
+        }
+        
+        // Actualizar vista previa del archivo
+        function updateFilePreview(file) {
+            const filePreview = document.getElementById('filePreview');
+            const size = formatFileSize(file.size);
+            
+            filePreview.innerHTML = `
+                <div class="file-preview-item">
+                    <div class="file-preview-name">
+                        <i class="fas fa-file"></i> 
+                        ${file.name}
+                        <span class="file-preview-size">(${size})</span>
+                    </div>
+                    <button class="file-preview-remove" onclick="clearFile()">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            `;
+        }
+        
+        // Limpiar archivo seleccionado
+        function clearFile() {
+            currentFile = null;
+            document.getElementById('fileInput').value = '';
+            document.getElementById('filePreview').innerHTML = '';
+        }
+        
+        // Formatear tamaño de archivo
+        function formatFileSize(bytes) {
+            if (bytes === 0) return '0 Bytes';
+            const k = 1024;
+            const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+        }
 
         // Función para descargar archivos
         function downloadFile(filename, contentType) {
@@ -1300,37 +1580,47 @@
         document.getElementById('uploadForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
+            if (!currentFile) {
+                alert('Por favor, selecciona un archivo.');
+                return;
+            }
+            
             const fileName = document.getElementById('fileName').value;
-            const fileContent = document.getElementById('fileContent').value;
             const fileWeek = document.getElementById('fileWeek').value;
             
-            if (!fileName || !fileContent || !fileWeek) {
+            if (!fileName || !fileWeek) {
                 alert('Por favor, completa todos los campos.');
                 return;
             }
             
-            // Crear nuevo objeto de archivo
-            const newFile = {
-                id: Date.now(),
-                name: fileName,
-                content: fileContent,
-                week: fileWeek,
-                uploadedAt: new Date().toLocaleDateString()
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const fileData = e.target.result;
+                
+                // Crear nuevo objeto de archivo
+                const newFile = {
+                    id: Date.now(),
+                    name: fileName,
+                    originalName: currentFile.name,
+                    type: currentFile.type,
+                    size: currentFile.size,
+                    data: fileData,
+                    week: fileWeek,
+                    uploadedAt: new Date().toLocaleDateString()
+                };
+                
+                // Agregar a la lista
+                uploadedFiles.push(newFile);
+                localStorage.setItem('uploadedFiles', JSON.stringify(uploadedFiles));
+                
+                // Limpiar formulario
+                this.reset();
+                clearFile();
+                updateFileList();
+                
+                alert('Archivo subido correctamente.');
             };
-            
-            // Agregar a la lista
-            uploadedFiles.push(newFile);
-            
-            // Guardar en localStorage
-            localStorage.setItem('uploadedFiles', JSON.stringify(uploadedFiles));
-            
-            // Limpiar formulario
-            document.getElementById('uploadForm').reset();
-            
-            // Actualizar lista
-            updateFileList();
-            
-            alert('Archivo subido correctamente.');
+            reader.readAsDataURL(currentFile);
         });
 
         // Actualizar la lista de archivos
@@ -1344,10 +1634,11 @@
             }
             
             uploadedFiles.forEach(file => {
+                const size = formatFileSize(file.size);
                 const fileItem = document.createElement('div');
                 fileItem.className = 'file-item';
                 fileItem.innerHTML = `
-                    <div class="file-name">${file.name} (Semana ${file.week})</div>
+                    <div class="file-name">${file.name} (Semana ${file.week}) - <span class="file-preview-size">${size}</span></div>
                     <div class="file-actions">
                         <a href="#" class="file-download" onclick="downloadUploadedFile(${file.id})">Descargar</a>
                         <span class="file-delete" onclick="deleteFile(${file.id})">Eliminar</span>
@@ -1358,52 +1649,34 @@
         }
 
         // Descargar un archivo subido
-       function downloadUploadedFile(fileId) {
-    try {
-        // Buscar el archivo
-        const file = uploadedFiles.find(f => f.id === fileId);
-        if (!file) {
-            console.error('Archivo no encontrado');
-            return;
+        function downloadUploadedFile(fileId) {
+            const file = uploadedFiles.find(f => f.id === fileId);
+            if (!file) return;
+            
+            // Convertir data URL a blob
+            const byteString = atob(file.data.split(',')[1]);
+            const mimeString = file.data.split(',')[0].split(':')[1].split(';')[0];
+            const ab = new ArrayBuffer(byteString.length);
+            const ia = new Uint8Array(ab);
+            
+            for (let i = 0; i < byteString.length; i++) {
+                ia[i] = byteString.charCodeAt(i);
+            }
+            
+            const blob = new Blob([ab], { type: mimeString });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = file.originalName;
+            document.body.appendChild(a);
+            a.click();
+            
+            setTimeout(() => {
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+            }, 100);
         }
-        
-        // Determinar el tipo MIME basado en la extensión del archivo
-        const extension = file.name.split('.').pop().toLowerCase();
-        const mimeTypes = {
-            'txt': 'text/plain',
-            'pdf': 'application/pdf',
-            'jpg': 'image/jpeg',
-            'jpeg': 'image/jpeg',
-            'png': 'image/png',
-            'zip': 'application/zip'
-        };
-        
-        const mimeType = mimeTypes[extension] || 'application/octet-stream';
-        
-        // Crear el Blob
-        const blob = new Blob([file.content], { type: mimeType });
-        const url = URL.createObjectURL(blob);
-        
-        // Crear y configurar el enlace de descarga
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = file.name;
-        
-        // Añadir al DOM, hacer clic y limpiar
-        document.body.appendChild(a);
-        a.click();
-        
-        // Limpiar recursos
-        setTimeout(() => {
-            document.body.removeChild(a);
-            URL.revokeObjectURL(url);
-        }, 100);
-        
-    } catch (error) {
-        console.error('Error al descargar el archivo:', error);
-        alert('Error al descargar el archivo. Consulta la consola para más detalles.');
-    }
-}
+
         // Eliminar un archivo
         function deleteFile(fileId) {
             if (confirm('¿Estás seguro de que quieres eliminar este archivo?')) {
@@ -1414,7 +1687,4 @@
         }
     </script>
 </body>
-
 </html>
-
-
