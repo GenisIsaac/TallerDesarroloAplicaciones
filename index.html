@@ -1,0 +1,1697 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desarrollo de Aplicaciones - Recursos</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap">
+    <style>
+        /* Variables CSS para tema oscuro */
+        :root {
+            --primary-color: #8f94fb73;
+            --secondary-color: #4e54c82d;
+            --accent-color: #ff6b6ba1;
+            --text-color: #f0f0f0;
+            --bg-color: #1212124d;
+            --card-bg: rgba(30, 30, 30, 0.295);
+            --header-bg: rgba(20, 20, 20, 0.397);
+            --footer-bg: #0a0a0a6c;
+            --footer-text: #ecf0f1;
+            --shadow: 0 10px 20px rgba(0, 0, 0, 0.253);
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            --gradient: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* Video de fondo */
+        .video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            overflow: hidden;
+        }
+
+        .video-background video {
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            filter: brightness(0.2);
+        }
+
+        /* Header fijo */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: var(--header-bg);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(15px);
+        }
+
+        .logo {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-main {
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .logo-sub {
+            font-size: 0.9rem;
+            color: #bbb;
+            font-weight: 400;
+            margin-top: 5px;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .nav-btn {
+            padding: 10px 20px;
+            background: transparent;
+            color: var(--text-color);
+            border: 2px solid var(--primary-color);
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .nav-btn:hover, .nav-btn.active {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .menu-btn {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 100px 5% 50px;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            z-index: 1;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            color: #ddd;
+            font-weight: 400;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            padding: 15px 40px;
+            background: var(--gradient);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            margin-top: 30px;
+            transition: var(--transition);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Secciones */
+        .section {
+            padding: 100px 5%;
+            display: none;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 60px;
+            font-weight: 700;
+            position: relative;
+        }
+
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--gradient);
+            border-radius: 2px;
+        }
+
+        /* Sección Recursos con diseño de mosaico */
+        .mosaic-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 50px;
+        }
+
+        .week-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            height: 100%;
+            position: relative;
+        }
+
+        .week-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+            border-color: var(--primary-color);
+        }
+
+        .card-image {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .week-card:hover .card-image img {
+            transform: scale(1.1);
+        }
+
+        .card-header {
+            background: var(--gradient);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .card-body {
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .card-desc {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #ccc;
+            line-height: 1.6;
+        }
+
+        .card-btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: var(--gradient);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: var(--transition);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .card-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Efecto hover con información adicional */
+        .card-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            opacity: 0;
+            transition: var(--transition);
+            z-index: 3;
+        }
+
+        .week-card:hover .card-overlay {
+            opacity: 1;
+        }
+
+        .overlay-title {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+            text-align: center;
+        }
+
+        .overlay-desc {
+            color: #ccc;
+            text-align: center;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        /* Sección de semana individual */
+        .week-content {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: var(--shadow);
+            max-width: 1000px;
+            margin: 50px auto;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            display: none;
+        }
+
+        .week-title {
+            text-align: center;
+            margin-bottom: 30px;
+            color: var(--primary-color);
+            font-size: 2.2rem;
+        }
+
+        .week-image {
+            width: 100%;
+            border-radius: 10px;
+            margin: 20px 0;
+            box-shadow: var(--shadow);
+        }
+
+        .week-intro {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            color: #ccc;
+            text-align: center;
+        }
+
+        .download-container {
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px 40px;
+            background: var(--gradient);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            text-decoration: none;
+            transition: var(--transition);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .download-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .download-btn i {
+            margin-right: 10px;
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-top: 20px;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+        }
+
+        .back-btn:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer */
+           footer {
+            background: var(--footer-bg);
+            padding: 70px 5% 30px;
+            color: var(--footer-text);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .footer-section {
+            padding: 0 15px;
+        }
+
+        .footer-section h3 {
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-section h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--gradient);
+            border-radius: 2px;
+        }
+
+        .footer-section p {
+            color: #aaa;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: #aaa;
+            text-decoration: none;
+            transition: var(--transition);
+            display: inline-block;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-color);
+            transform: translateX(5px);
+        }
+
+        .footer-links a i {
+            margin-right: 8px;
+            font-size: 0.9rem;
+        }
+
+        .contact-info {
+            margin-top: 20px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .contact-icon {
+            width: 36px;
+            height: 36px;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-size: 1rem;
+        }
+
+        .contact-text {
+            color: #aaa;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-color);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .social-icon:hover {
+            background: var(--gradient);
+            transform: translateY(-5px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .copyright {
+            color: #888;
+            font-size: 0.9rem;
+        }
+
+        .upload-section {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px auto;
+            max-width: 800px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .upload-title {
+            text-align: center;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        .upload-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .form-group label {
+            font-weight: 500;
+        }
+
+        .form-control {
+            padding: 12px 15px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(0, 0, 0, 0.2);
+            color: var(--text-color);
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        .submit-btn {
+            padding: 12px 25px;
+            background: var(--gradient);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            align-self: flex-start;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .file-list {
+            margin-top: 30px;
+        }
+
+        .file-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .file-name {
+            font-weight: 500;
+        }
+
+        .file-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .file-download {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .file-delete {
+            color: var(--accent-color);
+            cursor: pointer;
+        }
+
+        .upload-section {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px auto;
+            max-width: 800px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .upload-title {
+            text-align: center;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        .upload-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .form-group label {
+            font-weight: 500;
+        }
+
+        .form-control {
+            padding: 12px 15px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(0, 0, 0, 0.2);
+            color: var(--text-color);
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        .submit-btn {
+            padding: 12px 25px;
+            background: var(--gradient);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            align-self: flex-start;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .file-list {
+            margin-top: 30px;
+        }
+
+        .file-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .file-name {
+            font-weight: 500;
+        }
+
+        .file-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .file-download {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .file-delete {
+            color: var(--accent-color);
+            cursor: pointer;
+        }
+
+        /* Estilos para el área de arrastrar y soltar */
+        .file-drop-area {
+            border: 2px dashed rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+            padding: 25px;
+            text-align: center;
+            transition: var(--transition);
+            cursor: pointer;
+            position: relative;
+        }
+
+        .file-drop-area:hover, .file-drop-area.dragover {
+            border-color: var(--primary-color);
+            background: rgba(143, 148, 251, 0.1);
+        }
+
+        .file-drop-area i {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        .file-drop-text {
+            margin-bottom: 15px;
+        }
+
+        .file-input {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .file-preview {
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        .file-preview-item {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 10px 15px;
+            border-radius: 6px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .file-preview-name {
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .file-preview-size {
+            font-size: 0.8rem;
+            color: #888;
+        }
+
+        .file-preview-remove {
+            color: var(--accent-color);
+            cursor: pointer;
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+        }
+
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero-title {
+                font-size: 2.8rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .menu-btn {
+                display: block;
+            }
+            
+            .nav-buttons {
+                display: none;
+                position: fixed;
+                top: 80px;
+                right: 5%;
+                background: var(--header-bg);
+                flex-direction: column;
+                padding: 20px;
+                border-radius: 10px;
+                box-shadow: var(--shadow);
+                backdrop-filter: blur(15px);
+            }
+            
+            .nav-buttons.active {
+                display: flex;
+            }
+            
+            .hero-title {
+                font-size: 2.3rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .mosaic-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .week-content {
+                padding: 25px;
+            }
+            
+            .download-btn {
+                padding: 12px 25px;
+                font-size: 1rem;
+            }
+            
+            .nav-btn {
+                padding: 8px 15px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Video de fondo -->
+    <div class="video-background">
+        <video autoplay muted loop playsinline>
+            <source src="ssvid.net--ABSTRACTO-AZUL-FONDO-ANIMADO-VFX-GRATIS_480p.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <!-- Header -->
+    <header id="header">
+        <div class="logo">
+            <div class="logo-main">Desarrollo de Aplicaciones</div>
+            <div class="logo-sub">Paquiyauri Vivanco Genis Isaac</div>
+        </div>
+        
+        <div class="nav-buttons" id="nav-buttons">
+            <button class="nav-btn active" onclick="showSection('inicio')">Inicio</button>
+            <button class="nav-btn" onclick="showSection('recursos')">Recursos</button>
+            <button class="nav-btn" onclick="showSection('subir-archivo')">Subir Archivo</button>
+        </div>
+        
+        <div class="menu-btn" id="menu-btn">
+            <i class="fas fa-bars"></i>
+        </div>
+    </header>
+
+    <!-- Sección de Inicio -->
+    <section id="inicio" class="section active">
+        <div class="hero">
+            <div class="hero-content">
+                <h1 class="hero-title">Desarrollo de Aplicaciones</h1>
+                <p class="hero-subtitle">Plataforma de recursos académicos organizados por semanas</p>
+                <button class="cta-btn" onclick="showSection('recursos')">Explorar Recursos</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Recursos -->
+    <section id="recursos" class="section">
+        <h2 class="section-title">Recursos por Semana</h2>
+        
+        <p class="resources-intro">
+            Accede a todos los materiales de estudio organizados por semanas. Haz clic en cualquier semana para ver sus recursos disponibles y descargar los archivos.
+        </p>
+        
+        <div class="mosaic-grid">
+            <!-- Semana 1 -->
+            <div class="mosaic-item">
+                <div class="week-card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Semana 1">
+                    </div>
+                    <div class="card-header">
+                        <h2>Semana 1</h2>
+                    </div>
+                    
+                    <div class="card-overlay">
+                        <h3 class="overlay-title">Semana 1</h3>
+                        <p class="overlay-desc">Introducción al curso y conceptos fundamentales de desarrollo de aplicaciones.</p>
+                        <a href="#week1" class="card-btn" onclick="showWeek('week1')">Acceder</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Semana 2 -->
+            <div class="mosaic-item">
+                <div class="week-card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Semana 2">
+                    </div>
+                    <div class="card-header">
+                        <h2>Semana 2</h2>
+                    </div>
+                  
+                    <div class="card-overlay">
+                        <h3 class="overlay-title">Semana 2</h3>
+                        <p class="overlay-desc">Fundamentos de análisis de datos y herramientas estadísticas.</p>
+                        <a href="#week2" class="card-btn" onclick="showWeek('week2')">Acceder</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Semana 3 -->
+            <div class="mosaic-item">
+                <div class="week-card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Semana 3">
+                    </div>
+                    <div class="card-header">
+                        <h2>Semana 3</h2>
+                    </div>
+                    
+                    <div class="card-overlay">
+                        <h3 class="overlay-title">Semana 3</h3>
+                        <p class="overlay-desc">Introducción a la programación y construcción de algoritmos básicos.</p>
+                        <a href="#week3" class="card-btn" onclick="showWeek('week3')">Acceder</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Semana 4 -->
+            <div class="mosaic-item">
+                <div class="week-card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1548092372-44d6d1e21f04?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Semana 4">
+                    </div>
+                    <div class="card-header">
+                        <h2>Semana 4</h2>
+                    </div>
+                    
+                    <div class="card-overlay">
+                        <h3 class="overlay-title">Semana 4</h3>
+                        <p class="overlay-desc">Diseño e implementación de bases de datos relacionales.</p>
+                        <a href="#week4" class="card-btn" onclick="showWeek('week4')">Acceder</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Semana 5 -->
+            <div class="mosaic-item">
+                <div class="week-card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1432888622747-4eb9a8f5a07a?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Semana 5">
+                    </div>
+                    <div class="card-header">
+                        <h2>Semana 5</h2>
+                    </div>
+                   
+                    <div class="card-overlay">
+                        <h3 class="overlay-title">Semana 5</h3>
+                        <p class="overlay-desc">Fundamentos de redes de computadoras y protocolos de comunicación.</p>
+                        <a href="#week5" class="card-btn" onclick="showWeek('week5')">Acceder</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Semana 6 -->
+            <div class="mosaic-item">
+                <div class="week-card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Semana 6">
+                    </div>
+                    <div class="card-header">
+                        <h2>Semana 6</h2>
+                    </div>
+                   
+                    <div class="card-overlay">
+                        <h3 class="overlay-title">Semana 6</h3>
+                        <p class="overlay-desc">Principios de seguridad informática y protección de datos.</p>
+                        <a href="#week6" class="card-btn" onclick="showWeek('week6')">Acceder</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Semana 7 -->
+            <div class="mosaic-item">
+                <div class="week-card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Semana 7">
+                    </div>
+                    <div class="card-header">
+                        <h2>Semana 7</h2>
+                    </div>
+                   
+                    <div class="card-overlay">
+                        <h3 class="overlay-title">Semana 7</h3>
+                        <p class="overlay-desc">Introducción al desarrollo de aplicaciones para dispositivos móviles.</p>
+                        <a href="#week7" class="card-btn" onclick="showWeek('week7')">Acceder</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Semana 8 -->
+            <div class="mosaic-item">
+                <div class="week-card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Semana 8">
+                    </div>
+                    <div class="card-header">
+                        <h2>Semana 8</h2>
+                    </div>
+                   
+                    <div class="card-overlay">
+                        <h3 class="overlay-title">Semana 8</h3>
+                        <p class="overlay-desc">Servicios en la nube y desarrollo de aplicaciones web modernas.</p>
+                        <a href="#week8" class="card-btn" onclick="showWeek('week8')">Acceder</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Semana 9 -->
+            <div class="mosaic-item">
+                <div class="week-card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?ixlib=rb-4.0.3&auto=format&fit=c crop&w=500&q=80" alt="Semana 9">
+                    </div>
+                    <div class="card-header">
+                        <h2>Semana 9</h2>
+                    </div>
+                    
+                    <div class="card-overlay">
+                        <h3 class="overlay-title">Semana 9</h3>
+                        <p class="overlay-desc">Conceptos básicos de inteligencia artificial y machine learning.</p>
+                        <a href="#week9" class="card-btn" onclick="showWeek('week9')">Acceder</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Semana 10 -->
+            <div class="mosaic-item">
+                <div class="week-card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Semana 10">
+                    </div>
+                    <div class="card-header">
+                        <h2>Semana 10</h2>
+                    </div>
+                   
+                    <div class="card-overlay">
+                        <h3 class="overlay-title">Semana 10</h3>
+                        <p class="overlay-desc">Algoritmos de machine learning y casos de uso prácticos.</p>
+                        <a href="#week10" class="card-btn" onclick="showWeek('week10')">Acceder</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Semana 11 -->
+            <div class="mosaic-item">
+                <div class="week-card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1507925921958-8a62f3d1a50d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Semana 11">
+                    </div>
+                    <div class="card-header">
+                        <h2>Semana 11</h2>
+                    </div>
+                    
+                    <div class="card-overlay">
+                        <h3 class="overlay-title">Semana 11</h3>
+                        <p class="overlay-desc">Metodologías ágiles y gestión eficiente de proyectos de desarrollo.</p>
+                        <a href="#week11" class="card-btn" onclick="showWeek('week11')">Acceder</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Semana 12 -->
+            <div class="mosaic-item">
+                <div class="week-card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1568992687947-868a62a9f521?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Semana 12">
+                    </div>
+                    <div class="card-header">
+                        <h2>Semana 12</h2>
+                    </div>
+                    
+                    <div class="card-overlay">
+                        <h3 class="overlay-title">Semana 12</h3>
+                        <p class="overlay-desc">Técnicas avanzadas de análisis y visualización de datos.</p>
+                        <a href="#week12" class="card-btn" onclick="showWeek('week12')">Acceder</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Semana 13 -->
+            <div class="mosaic-item">
+                <div class="week-card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Semana 13">
+                    </div>
+                    <div class="card-header">
+                        <h2>Semana 13</h2>
+                    </div>
+                    
+                    <div class="card-overlay">
+                        <h3 class="overlay-title">Semana 13</h3>
+                        <p class="overlay-desc">Técnicas criptográficas y seguridad avanzada en aplicaciones.</p>
+                        <a href="#week13" class="card-btn" onclick="showWeek('week13')">Acceder</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Semana 14 -->
+            <div class="mosaic-item">
+                <div class="week-card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Semana 14">
+                    </div>
+                    <div class="card-header">
+                        <h2>Semana 14</h2>
+                    </div>
+                  
+                    <div class="card-overlay">
+                        <h3 class="overlay-title">Semana 14</h3>
+                        <p class="overlay-desc">Administración de sistemas y prácticas DevOps.</p>
+                        <a href="#week14" class="card-btn" onclick="showWeek('week14')">Acceder</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Semana 15 -->
+            <div class="mosaic-item">
+                <div class="week-card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1593508512255-86ab42a8e620?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Semana 15">
+                    </div>
+                    <div class="card-header">
+                        <h2>Semana 15</h2>
+                    </div>
+                    
+                    <div class="card-overlay">
+                        <h3 class="overlay-title">Semana 15</h3>
+                        <p class="overlay-desc">Desarrollo de experiencias inmersivas con RV y RA.</p>
+                        <a href="#week15" class="card-btn" onclick="showWeek('week15')">Acceder</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Semana 16 -->
+            <div class="mosaic-item">
+                <div class="week-card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1531403009284-440f080d1e12?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Semana 16">
+                    </div>
+                    <div class="card-header">
+                        <h2>Semana 16</h2>
+                    </div>
+                    
+                    <div class="card-overlay">
+                        <h3 class="overlay-title">Semana 16</h3>
+                        <p class="overlay-desc">Proyecto final integrador y conclusiones del curso.</p>
+                        <a href="#week16" class="card-btn" onclick="showWeek('week16')">Acceder</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+ <!-- Sección para subir archivos -->
+<section id="subir-archivo" class="section">
+        <h2 class="section-title">Subir Nuevos Archivos</h2>
+        
+        <div class="upload-section">
+            <h3 class="upload-title">Subir un nuevo archivo para descargar</h3>
+            
+            <form id="uploadForm" class="upload-form">
+                <div class="form-group">
+                    <label for="fileName">Nombre para mostrar:</label>
+                    <input type="text" id="fileName" class="form-control" placeholder="Ej: Guía de estudio Semana 1" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="fileWeek">Semana asociada:</label>
+                    <select id="fileWeek" class="form-control" required>
+                        <option value="">Selecciona una semana</option>
+                        <option value="1">Semana 1</option>
+                        <option value="2">Semana 2</option>
+                        <option value="3">Semana 3</option>
+                        <option value="4">Semana 4</option>
+                        <option value="5">Semana 5</option>
+                        <option value="6">Semana 6</option>
+                        <option value="7">Semana 7</option>
+                        <option value="8">Semana 8</option>
+                         <option value="8">Semana 9</option>
+                          <option value="8">Semana 10</option>
+                           <option value="8">Semana 11</option>
+                            <option value="8">Semana 12</option>
+                             <option value="8">Semana 13</option>
+                              <option value="8">Semana 14</option>
+                               <option value="8">Semana 15</option>
+                                <option value="8">Semana 16</option>
+                    </select>
+                </div>
+                 
+                <div class="form-group">
+                    <label>Seleccionar archivo:</label>
+                    <div class="file-drop-area" id="fileDropArea">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <p class="file-drop-text">Arrastra y suelta tu archivo aquí</p>
+                        <p>o</p>
+                        <button type="button" class="card-btn" onclick="document.getElementById('fileInput').click()">Seleccionar archivo</button>
+                        <input type="file" id="fileInput" class="file-input" required>
+                    </div>
+                    <div class="file-preview" id="filePreview"></div>
+                </div>
+                
+                <button type="submit" class="submit-btn">Subir Archivo</button>
+            </form>
+        </div>
+        
+        <div class="upload-section">
+            <h3 class="upload-title">Archivos disponibles para descargar</h3>
+            
+            <div class="file-list" id="fileList">
+                <!-- Los archivos se mostrarán aquí dinámicamente -->
+                <p>No hay archivos disponibles. Sube tu primer archivo.</p>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Sección de semana individual (inicialmente oculta) -->
+   <section id="week1" class="week-content">
+        <h2 class="week-title">Recursos - Semana 1</h2>
+        
+        <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Introducción al desarrollo" class="week-image">
+        
+        <p class="week-intro">
+            Bienvenido a la primera semana del curso de Desarrollo de Aplicaciones. En esta sección encontrarás todos los recursos necesarios para comenzar tu aprendizaje. Los materiales incluyen presentaciones, guías de instalación, ejercicios prácticos y material complementario de lectura.
+        </p>
+        
+        <div class="download-container">
+            <a href="#" class="download-btn" onclick="downloadFile('semana1.pdf', 'application/pdf')">
+                <i class="fas fa-download"></i> Descargar recursos (PDF)
+            </a>
+            
+            <a href="#" class="download-btn" onclick="downloadFile('ejercicios_semana1.zip', 'application/zip')" style="margin-left: 15px;">
+                <i class="fas fa-download"></i> Descargar ejercicios (ZIP)
+            </a>
+        </div>
+        
+        <a href="#recursos" class="back-btn" onclick="showSection('recursos')">
+            <i class="fas fa-arrow-left"></i> Volver a recursos
+        </a>
+    </section>
+
+    <!-- Footer -->
+     <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Acerca de</h3>
+                <p>Plataforma educativa dedicada a proporcionar recursos de calidad para el aprendizaje del desarrollo de aplicaciones. Nuestro objetivo es facilitar el acceso a materiales educativos organizados y actualizados.</p>
+                <div class="social-icons">
+                    <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Enlaces Rápidos</h3>
+                 <ul class="footer-links">
+                    <li><a href="#inicio" onclick="showSection('inicio')"><i class="fas fa-chevron-right"></i> Inicio</a></li>
+                    <li><a href="#recursos" onclick="showSection('recursos')"><i class="fas fa-chevron-right"></i> Recursos</a></li>
+                    <li><a href="#subir-archivo" onclick="showSection('subir-archivo')"><i class="fas fa-chevron-right"></i> Subir Archivo</a></li>
+                    <li><a href="#week1" onclick="showWeek('week1')"><i class="fas fa-chevron-right"></i> Semana 1</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Contacto</h3>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-text">
+                            Lima, Perú
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-text">
+                            +51 987 654 321
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-text">
+                            contacto@desarrolloapps.com
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="contact-text">
+                            Lunes - Viernes: 9:00 - 18:00
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p class="copyright">&copy; 2023 Desarrollo de Aplicaciones - Paquiyauri Vivanco Genis Isaac. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+    <script>
+
+// Almacenamiento de archivos (simulado)
+           let uploadedFiles = JSON.parse(localStorage.getItem('uploadedFiles')) || [];
+        let currentFile = null;
+
+        // Mostrar/ocultar secciones
+        function showSection(sectionId) {
+            // Ocultar todas las secciones
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Ocultar todas las semanas
+            document.querySelectorAll('.week-content').forEach(section => {
+                section.style.display = 'none';
+            });
+            
+            // Mostrar la sección seleccionada
+            document.getElementById(sectionId).classList.add('active');
+            
+            // Actualizar botones de navegación
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            const activeBtn = document.querySelector(`.nav-btn[onclick="showSection('${sectionId}')"]`);
+            if (activeBtn) {
+                activeBtn.classList.add('active');
+            }
+            
+            // Si es la sección de subir archivo, actualizar la lista
+            if (sectionId === 'subir-archivo') {
+                updateFileList();
+            }
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+
+        // Mostrar la página de una semana específica
+        function showWeek(weekId) {
+            document.querySelectorAll('.week-content').forEach(section => {
+                section.style.display = 'none';
+            });
+            document.getElementById(weekId).style.display = 'block';
+            
+            // Ocultar otras secciones
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            window.scrollTo(0, 0);
+        }
+
+        // Toggle menu móvil
+        document.getElementById('menu-btn').addEventListener('click', function() {
+            document.getElementById('nav-buttons').classList.toggle('active');
+        });
+
+        // Cerrar menú al hacer clic en un enlace (en dispositivos móviles)
+        document.querySelectorAll('.nav-btn').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('nav-buttons').classList.remove('active');
+            });
+        });
+
+        // Comprobar si hay un hash en la URL para mostrar la semana correspondiente
+        window.addEventListener('load', () => {
+            if (window.location.hash) {
+                const weekId = window.location.hash.substring(1);
+                if (document.getElementById(weekId)) {
+                    showSection('recursos');
+                    showWeek(weekId);
+                }
+            }
+            
+            // Actualizar lista de archivos al cargar la página
+            updateFileList();
+            // Configurar eventos de arrastrar y soltar
+            setupDragAndDrop();
+        });
+
+        // Manejar cambios en el hash de la URL
+        window.addEventListener('hashchange', () => {
+            if (window.location.hash) {
+                const weekId = window.location.hash.substring(1);
+                if (document.getElementById(weekId)) {
+                    showSection('recursos');
+                    showWeek(weekId);
+                }
+            }
+        });
+
+           // Configurar eventos de arrastrar y soltar
+        function setupDragAndDrop() {
+            const fileDropArea = document.getElementById('fileDropArea');
+            const fileInput = document.getElementById('fileInput');
+            const filePreview = document.getElementById('filePreview');
+            
+            // Eventos para arrastrar y soltar
+            ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+                fileDropArea.addEventListener(eventName, preventDefaults, false);
+            });
+            
+            function preventDefaults(e) {
+                e.preventDefault();
+                e.stopPropagation();
+            }
+            
+            // Resaltar área de drop
+            ['dragenter', 'dragover'].forEach(eventName => {
+                fileDropArea.addEventListener(eventName, highlight, false);
+            });
+            
+            ['dragleave', 'drop'].forEach(eventName => {
+                fileDropArea.addEventListener(eventName, unhighlight, false);
+            });
+            
+            function highlight() {
+                fileDropArea.classList.add('dragover');
+            }
+            
+            function unhighlight() {
+                fileDropArea.classList.remove('dragover');
+            }
+            
+            // Manejar drop
+            fileDropArea.addEventListener('drop', handleDrop, false);
+            
+            function handleDrop(e) {
+                const dt = e.dataTransfer;
+                const files = dt.files;
+                
+                if (files.length) {
+                    handleFiles(files);
+                }
+            }
+            
+            // Manejar selección de archivo
+            fileInput.addEventListener('change', function() {
+                handleFiles(this.files);
+            });
+        }
+        
+        // Manejar archivos seleccionados
+        function handleFiles(files) {
+            if (files.length > 0) {
+                currentFile = files[0];
+                updateFilePreview(currentFile);
+            }
+        }
+        
+        // Actualizar vista previa del archivo
+        function updateFilePreview(file) {
+            const filePreview = document.getElementById('filePreview');
+            const size = formatFileSize(file.size);
+            
+            filePreview.innerHTML = `
+                <div class="file-preview-item">
+                    <div class="file-preview-name">
+                        <i class="fas fa-file"></i> 
+                        ${file.name}
+                        <span class="file-preview-size">(${size})</span>
+                    </div>
+                    <button class="file-preview-remove" onclick="clearFile()">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            `;
+        }
+        
+        // Limpiar archivo seleccionado
+        function clearFile() {
+            currentFile = null;
+            document.getElementById('fileInput').value = '';
+            document.getElementById('filePreview').innerHTML = '';
+        }
+        
+        // Formatear tamaño de archivo
+        function formatFileSize(bytes) {
+            if (bytes === 0) return '0 Bytes';
+            const k = 1024;
+            const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+        }
+
+        // Función para descargar archivos
+        function downloadFile(filename, contentType) {
+            // Crear un blob con contenido de ejemplo
+            const content = "Este es un archivo de ejemplo para " + filename + ". Puedes reemplazar este contenido con tu propio archivo.";
+            const blob = new Blob([content], { type: contentType });
+            
+            // Crear un enlace para descargar el blob
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = filename;
+            document.body.appendChild(a);
+            a.click();
+            
+            // Limpiar
+            setTimeout(() => {
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+            }, 100);
+        }
+
+        // Manejar el formulario de subida de archivos
+        document.getElementById('uploadForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            if (!currentFile) {
+                alert('Por favor, selecciona un archivo.');
+                return;
+            }
+            
+            const fileName = document.getElementById('fileName').value;
+            const fileWeek = document.getElementById('fileWeek').value;
+            
+            if (!fileName || !fileWeek) {
+                alert('Por favor, completa todos los campos.');
+                return;
+            }
+            
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const fileData = e.target.result;
+                
+                // Crear nuevo objeto de archivo
+                const newFile = {
+                    id: Date.now(),
+                    name: fileName,
+                    originalName: currentFile.name,
+                    type: currentFile.type,
+                    size: currentFile.size,
+                    data: fileData,
+                    week: fileWeek,
+                    uploadedAt: new Date().toLocaleDateString()
+                };
+                
+                // Agregar a la lista
+                uploadedFiles.push(newFile);
+                localStorage.setItem('uploadedFiles', JSON.stringify(uploadedFiles));
+                
+                // Limpiar formulario
+                this.reset();
+                clearFile();
+                updateFileList();
+                
+                alert('Archivo subido correctamente.');
+            };
+            reader.readAsDataURL(currentFile);
+        });
+
+        // Actualizar la lista de archivos
+        function updateFileList() {
+            const fileList = document.getElementById('fileList');
+            fileList.innerHTML = '';
+            
+            if (uploadedFiles.length === 0) {
+                fileList.innerHTML = '<p>No hay archivos disponibles. Sube tu primer archivo.</p>';
+                return;
+            }
+            
+            uploadedFiles.forEach(file => {
+                const size = formatFileSize(file.size);
+                const fileItem = document.createElement('div');
+                fileItem.className = 'file-item';
+                fileItem.innerHTML = `
+                    <div class="file-name">${file.name} (Semana ${file.week}) - <span class="file-preview-size">${size}</span></div>
+                    <div class="file-actions">
+                        <a href="#" class="file-download" onclick="downloadUploadedFile(${file.id})">Descargar</a>
+                        <span class="file-delete" onclick="deleteFile(${file.id})">Eliminar</span>
+                    </div>
+                `;
+                fileList.appendChild(fileItem);
+            });
+        }
+
+        // Descargar un archivo subido
+        function downloadUploadedFile(fileId) {
+            const file = uploadedFiles.find(f => f.id === fileId);
+            if (!file) return;
+            
+            // Convertir data URL a blob
+            const byteString = atob(file.data.split(',')[1]);
+            const mimeString = file.data.split(',')[0].split(':')[1].split(';')[0];
+            const ab = new ArrayBuffer(byteString.length);
+            const ia = new Uint8Array(ab);
+            
+            for (let i = 0; i < byteString.length; i++) {
+                ia[i] = byteString.charCodeAt(i);
+            }
+            
+            const blob = new Blob([ab], { type: mimeString });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = file.originalName;
+            document.body.appendChild(a);
+            a.click();
+            
+            setTimeout(() => {
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+            }, 100);
+        }
+
+        // Eliminar un archivo
+        function deleteFile(fileId) {
+            if (confirm('¿Estás seguro de que quieres eliminar este archivo?')) {
+                uploadedFiles = uploadedFiles.filter(f => f.id !== fileId);
+                localStorage.setItem('uploadedFiles', JSON.stringify(uploadedFiles));
+                updateFileList();
+            }
+        }
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
