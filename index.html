@@ -1358,25 +1358,52 @@
         }
 
         // Descargar un archivo subido
-        function downloadUploadedFile(fileId) {
-            const file = uploadedFiles.find(f => f.id === fileId);
-            if (!file) return;
-            
-            const blob = new Blob([file.content], { type: 'text/plain' });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = file.name + '.txt';
-            document.body.appendChild(a);
-            a.click();
-            
-            // Limpiar
-            setTimeout(() => {
-                document.body.removeChild(a);
-                URL.revokeObjectURL(url);
-            }, 100);
+       function downloadUploadedFile(fileId) {
+    try {
+        // Buscar el archivo
+        const file = uploadedFiles.find(f => f.id === fileId);
+        if (!file) {
+            console.error('Archivo no encontrado');
+            return;
         }
-
+        
+        // Determinar el tipo MIME basado en la extensión del archivo
+        const extension = file.name.split('.').pop().toLowerCase();
+        const mimeTypes = {
+            'txt': 'text/plain',
+            'pdf': 'application/pdf',
+            'jpg': 'image/jpeg',
+            'jpeg': 'image/jpeg',
+            'png': 'image/png',
+            'zip': 'application/zip'
+        };
+        
+        const mimeType = mimeTypes[extension] || 'application/octet-stream';
+        
+        // Crear el Blob
+        const blob = new Blob([file.content], { type: mimeType });
+        const url = URL.createObjectURL(blob);
+        
+        // Crear y configurar el enlace de descarga
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = file.name;
+        
+        // Añadir al DOM, hacer clic y limpiar
+        document.body.appendChild(a);
+        a.click();
+        
+        // Limpiar recursos
+        setTimeout(() => {
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }, 100);
+        
+    } catch (error) {
+        console.error('Error al descargar el archivo:', error);
+        alert('Error al descargar el archivo. Consulta la consola para más detalles.');
+    }
+}
         // Eliminar un archivo
         function deleteFile(fileId) {
             if (confirm('¿Estás seguro de que quieres eliminar este archivo?')) {
@@ -1389,4 +1416,5 @@
 </body>
 
 </html>
+
 
