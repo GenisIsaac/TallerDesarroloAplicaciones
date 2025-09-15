@@ -733,77 +733,190 @@
             color: var(--accent-color);
             cursor: pointer;
         }
-
-        /* Estilos para el área de arrastrar y soltar */
-        .file-drop-area {
-            border: 2px dashed rgba(255, 255, 255, 0.3);
-            border-radius: 8px;
-            padding: 25px;
-            text-align: center;
-            transition: var(--transition);
-            cursor: pointer;
-            position: relative;
+        .upload-section {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px auto;
+            max-width: 800px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .file-drop-area:hover, .file-drop-area.dragover {
+        .upload-title {
+            text-align: center;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        .upload-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .form-group label {
+            font-weight: 500;
+        }
+
+        .form-control {
+            padding: 12px 15px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(0, 0, 0, 0.2);
+            color: var(--text-color);
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        .submit-btn {
+            padding: 12px 25px;
+            background: var(--gradient);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            align-self: flex-start;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .file-list {
+            margin-top: 30px;
+        }
+
+        .file-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .file-name {
+            font-weight: 500;
+        }
+
+        .file-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .file-download {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .file-delete {
+            color: var(--accent-color);
+            cursor: pointer;
+        }
+
+
+        /* Estilos para el área de arrastrar y soltar */
+       /* Zona de arrastrar y soltar */
+        .drop-zone {
+            border: 2px dashed rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-bottom: 20px;
+        }
+
+        .drop-zone:hover, .drop-zone.dragover {
             border-color: var(--primary-color);
             background: rgba(143, 148, 251, 0.1);
         }
 
-        .file-drop-area i {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
+        .drop-zone i {
+            font-size: 3rem;
+            margin-bottom: 15px;
             color: var(--primary-color);
         }
 
-        .file-drop-text {
-            margin-bottom: 15px;
-        }
-
-        .file-input {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            opacity: 0;
-            cursor: pointer;
-        }
-
-        .file-preview {
-            margin-top: 20px;
-            text-align: left;
-        }
-
-        .file-preview-item {
-            background: rgba(0, 0, 0, 0.2);
-            padding: 10px 15px;
-            border-radius: 6px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        .drop-zone p {
             margin-bottom: 10px;
         }
 
-        .file-preview-name {
-            font-size: 0.9rem;
+        .drop-zone span {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .file-input {
+            display: none;
+        }
+        /* Lista de archivos en las semanas */
+        .week-files {
+            margin-top: 40px;
+        }
+
+        .week-files h3 {
+            margin-bottom: 20px;
+            color: var(--primary-color);
+            text-align: center;
+        }
+
+        .file-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+        }
+
+        .file-card {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            padding: 15px;
             display: flex;
+            flex-direction: column;
             align-items: center;
-            gap: 8px;
+            transition: var(--transition);
         }
 
-        .file-preview-size {
-            font-size: 0.8rem;
-            color: #888;
+        .file-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
 
-        .file-preview-remove {
-            color: var(--accent-color);
-            cursor: pointer;
-            background: none;
-            border: none;
-            font-size: 1.2rem;
+        .file-icon {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
         }
+
+        .pdf-icon {
+            color: #e74c3c;
+        }
+
+        .zip-icon {
+            color: #f39c12;
+        }
+
+        .file-card-name {
+            font-weight: 500;
+            text-align: center;
+            margin-bottom: 10px;
+            word-break: break-word;
+        }
+
 
 
         /* Responsive Design */
@@ -1210,15 +1323,23 @@
         </div>
     </section>
  <!-- Sección para subir archivos -->
-<section id="subir-archivo" class="section">
+  <section id="subir-archivo" class="section">
         <h2 class="section-title">Subir Nuevos Archivos</h2>
         
         <div class="upload-section">
             <h3 class="upload-title">Subir un nuevo archivo para descargar</h3>
             
+            <div class="drop-zone" id="dropZone">
+                <i class="fas fa-cloud-upload-alt"></i>
+                <p>Arrastra y suelta tu archivo aquí</p>
+                <p>o</p>
+                <span>Seleccionar archivo</span>
+                <input type="file" id="fileInput" class="file-input" accept=".pdf,.zip,.doc,.docx,.txt">
+            </div>
+            
             <form id="uploadForm" class="upload-form">
                 <div class="form-group">
-                    <label for="fileName">Nombre para mostrar:</label>
+                    <label for="fileName">Nombre del archivo:</label>
                     <input type="text" id="fileName" class="form-control" placeholder="Ej: Guía de estudio Semana 1" required>
                 </div>
                 
@@ -1233,28 +1354,15 @@
                         <option value="5">Semana 5</option>
                         <option value="6">Semana 6</option>
                         <option value="7">Semana 7</option>
-                        <option value="8">Semana 8</option>
-                         <option value="8">Semana 9</option>
-                          <option value="8">Semana 10</option>
-                           <option value="8">Semana 11</option>
-                            <option value="8">Semana 12</option>
-                             <option value="8">Semana 13</option>
-                              <option value="8">Semana 14</option>
-                               <option value="8">Semana 15</option>
-                                <option value="8">Semana 16</option>
+                        <option value="8">Semana 9</option>
+                        <option value="8">Semana 10</option>
+                        <option value="8">Semana 11</option>
+                        <option value="8">Semana 12</option>
+                        <option value="8">Semana 13</option>
+                        <option value="8">Semana 14</option>
+                        <option value="8">Semana 15</option>
+                        <option value="8">Semana 16</option>
                     </select>
-                </div>
-                 
-                <div class="form-group">
-                    <label>Seleccionar archivo:</label>
-                    <div class="file-drop-area" id="fileDropArea">
-                        <i class="fas fa-cloud-upload-alt"></i>
-                        <p class="file-drop-text">Arrastra y suelta tu archivo aquí</p>
-                        <p>o</p>
-                        <button type="button" class="card-btn" onclick="document.getElementById('fileInput').click()">Seleccionar archivo</button>
-                        <input type="file" id="fileInput" class="file-input" required>
-                    </div>
-                    <div class="file-preview" id="filePreview"></div>
                 </div>
                 
                 <button type="submit" class="submit-btn">Subir Archivo</button>
@@ -1272,6 +1380,7 @@
     </section>
 
 
+
     <!-- Sección de semana individual (inicialmente oculta) -->
    <section id="week1" class="week-content">
         <h2 class="week-title">Recursos - Semana 1</h2>
@@ -1282,15 +1391,15 @@
             Bienvenido a la primera semana del curso de Desarrollo de Aplicaciones. En esta sección encontrarás todos los recursos necesarios para comenzar tu aprendizaje. Los materiales incluyen presentaciones, guías de instalación, ejercicios prácticos y material complementario de lectura.
         </p>
         
-        <div class="download-container">
-            <a href="#" class="download-btn" onclick="downloadFile('semana1.pdf', 'application/pdf')">
-                <i class="fas fa-download"></i> Descargar recursos (PDF)
-            </a>
-            
-            <a href="#" class="download-btn" onclick="downloadFile('ejercicios_semana1.zip', 'application/zip')" style="margin-left: 15px;">
-                <i class="fas fa-download"></i> Descargar ejercicios (ZIP)
-            </a>
+       
+         <!-- Archivos subidos para esta semana -->
+        <div class="week-files">
+            <h3>Archivos subidos para esta semana</h3>
+            <div class="file-grid" id="week1-files">
+                <!-- Los archivos subidos para la semana 1 se mostrarán aquí -->
+            </div>
         </div>
+        
         
         <a href="#recursos" class="back-btn" onclick="showSection('recursos')">
             <i class="fas fa-arrow-left"></i> Volver a recursos
@@ -1371,7 +1480,9 @@
 
 // Almacenamiento de archivos (simulado)
            let uploadedFiles = JSON.parse(localStorage.getItem('uploadedFiles')) || [];
-        let currentFile = null;
+
+        // Variables para el archivo seleccionado
+        let selectedFile = null;
 
         // Mostrar/ocultar secciones
         function showSection(sectionId) {
@@ -1419,6 +1530,9 @@
                 section.classList.remove('active');
             });
             
+            // Actualizar los archivos de la semana
+            updateWeekFiles(weekId);
+            
             window.scrollTo(0, 0);
         }
 
@@ -1446,8 +1560,9 @@
             
             // Actualizar lista de archivos al cargar la página
             updateFileList();
-            // Configurar eventos de arrastrar y soltar
-            setupDragAndDrop();
+            
+            // Configurar la zona de arrastrar y soltar
+            setupDropZone();
         });
 
         // Manejar cambios en el hash de la URL
@@ -1461,92 +1576,90 @@
             }
         });
 
-           // Configurar eventos de arrastrar y soltar
-        function setupDragAndDrop() {
-            const fileDropArea = document.getElementById('fileDropArea');
+        // Configurar la zona de arrastrar y soltar
+        function setupDropZone() {
+            const dropZone = document.getElementById('dropZone');
             const fileInput = document.getElementById('fileInput');
-            const filePreview = document.getElementById('filePreview');
             
-            // Eventos para arrastrar y soltar
-            ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
-                fileDropArea.addEventListener(eventName, preventDefaults, false);
+            // Click en la zona de drop
+            dropZone.addEventListener('click', () => {
+                fileInput.click();
             });
             
-            function preventDefaults(e) {
-                e.preventDefault();
-                e.stopPropagation();
-            }
+            // Cambio en el input de archivo
+            fileInput.addEventListener('change', (e) => {
+                if (e.target.files.length > 0) {
+                    handleFileSelection(e.target.files[0]);
+                }
+            });
             
-            // Resaltar área de drop
+            // Prevenir comportamientos por defecto para drag and drop
+            ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+                dropZone.addEventListener(eventName, preventDefaults, false);
+            });
+            
+            // Resaltar la zona de drop
             ['dragenter', 'dragover'].forEach(eventName => {
-                fileDropArea.addEventListener(eventName, highlight, false);
+                dropZone.addEventListener(eventName, highlight, false);
             });
             
             ['dragleave', 'drop'].forEach(eventName => {
-                fileDropArea.addEventListener(eventName, unhighlight, false);
+                dropZone.addEventListener(eventName, unhighlight, false);
             });
             
-            function highlight() {
-                fileDropArea.classList.add('dragover');
-            }
-            
-            function unhighlight() {
-                fileDropArea.classList.remove('dragover');
-            }
-            
-            // Manejar drop
-            fileDropArea.addEventListener('drop', handleDrop, false);
-            
-            function handleDrop(e) {
-                const dt = e.dataTransfer;
-                const files = dt.files;
-                
-                if (files.length) {
-                    handleFiles(files);
-                }
-            }
-            
-            // Manejar selección de archivo
-            fileInput.addEventListener('change', function() {
-                handleFiles(this.files);
-            });
+            // Manejar el drop
+            dropZone.addEventListener('drop', handleDrop, false);
         }
         
-        // Manejar archivos seleccionados
-        function handleFiles(files) {
+        function preventDefaults(e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+        
+        function highlight() {
+            document.getElementById('dropZone').classList.add('dragover');
+        }
+        
+        function unhighlight() {
+            document.getElementById('dropZone').classList.remove('dragover');
+        }
+        
+        function handleDrop(e) {
+            const dt = e.dataTransfer;
+            const files = dt.files;
+            
             if (files.length > 0) {
-                currentFile = files[0];
-                updateFilePreview(currentFile);
+                handleFileSelection(files[0]);
             }
         }
         
-        // Actualizar vista previa del archivo
-        function updateFilePreview(file) {
-            const filePreview = document.getElementById('filePreview');
-            const size = formatFileSize(file.size);
+        function handleFileSelection(file) {
+            selectedFile = file;
             
-            filePreview.innerHTML = `
-                <div class="file-preview-item">
-                    <div class="file-preview-name">
-                        <i class="fas fa-file"></i> 
-                        ${file.name}
-                        <span class="file-preview-size">(${size})</span>
-                    </div>
-                    <button class="file-preview-remove" onclick="clearFile()">
-                        <i class="fas fa-times"></i>
-                    </button>
-                </div>
+            // Establecer el nombre del archivo como valor predeterminado
+            const fileNameInput = document.getElementById('fileName');
+            if (!fileNameInput.value) {
+                // Eliminar la extensión del nombre del archivo para el nombre mostrado
+                const fileNameWithoutExt = file.name.replace(/\.[^/.]+$/, "");
+                fileNameInput.value = fileNameWithoutExt;
+            }
+            
+            // Mostrar información del archivo seleccionado
+            const dropZone = document.getElementById('dropZone');
+            dropZone.innerHTML = `
+                <i class="fas fa-file"></i>
+                <p>Archivo seleccionado:</p>
+                <p><strong>${file.name}</strong></p>
+                <p>Tamaño: ${formatFileSize(file.size)}</p>
+                <span>Seleccionar otro archivo</span>
             `;
+            
+            // Volver a agregar el event listener después de cambiar el HTML
+            dropZone.addEventListener('click', () => {
+                document.getElementById('fileInput').click();
+            });
         }
         
-        // Limpiar archivo seleccionado
-        function clearFile() {
-            currentFile = null;
-            document.getElementById('fileInput').value = '';
-            document.getElementById('filePreview').innerHTML = '';
-        }
-        
-        // Formatear tamaño de archivo
         function formatFileSize(bytes) {
             if (bytes === 0) return '0 Bytes';
             const k = 1024;
@@ -1580,8 +1693,8 @@
         document.getElementById('uploadForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
-            if (!currentFile) {
-                alert('Por favor, selecciona un archivo.');
+            if (!selectedFile) {
+                alert('Por favor, selecciona un archivo primero.');
                 return;
             }
             
@@ -1593,34 +1706,51 @@
                 return;
             }
             
+            // Leer el archivo como base64
             const reader = new FileReader();
             reader.onload = function(e) {
-                const fileData = e.target.result;
-                
                 // Crear nuevo objeto de archivo
                 const newFile = {
                     id: Date.now(),
                     name: fileName,
-                    originalName: currentFile.name,
-                    type: currentFile.type,
-                    size: currentFile.size,
-                    data: fileData,
+                    originalName: selectedFile.name,
+                    content: e.target.result,
                     week: fileWeek,
+                    type: selectedFile.type,
+                    size: selectedFile.size,
                     uploadedAt: new Date().toLocaleDateString()
                 };
                 
                 // Agregar a la lista
                 uploadedFiles.push(newFile);
+                
+                // Guardar en localStorage
                 localStorage.setItem('uploadedFiles', JSON.stringify(uploadedFiles));
                 
                 // Limpiar formulario
-                this.reset();
-                clearFile();
+                document.getElementById('uploadForm').reset();
+                selectedFile = null;
+                
+                // Restaurar la zona de drop
+                const dropZone = document.getElementById('dropZone');
+                dropZone.innerHTML = `
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <p>Arrastra y suelta tu archivo aquí</p>
+                    <p>o</p>
+                    <span>Seleccionar archivo</span>
+                    <input type="file" id="fileInput" class="file-input" accept=".pdf,.zip,.doc,.docx,.txt">
+                `;
+                
+                // Volver a configurar la zona de drop
+                setupDropZone();
+                
+                // Actualizar lista
                 updateFileList();
                 
                 alert('Archivo subido correctamente.');
             };
-            reader.readAsDataURL(currentFile);
+            
+            reader.readAsDataURL(selectedFile);
         });
 
         // Actualizar la lista de archivos
@@ -1634,11 +1764,10 @@
             }
             
             uploadedFiles.forEach(file => {
-                const size = formatFileSize(file.size);
                 const fileItem = document.createElement('div');
                 fileItem.className = 'file-item';
                 fileItem.innerHTML = `
-                    <div class="file-name">${file.name} (Semana ${file.week}) - <span class="file-preview-size">${size}</span></div>
+                    <div class="file-name">${file.name} (Semana ${file.week})</div>
                     <div class="file-actions">
                         <a href="#" class="file-download" onclick="downloadUploadedFile(${file.id})">Descargar</a>
                         <span class="file-delete" onclick="deleteFile(${file.id})">Eliminar</span>
@@ -1648,22 +1777,64 @@
             });
         }
 
+        // Actualizar archivos por semana
+        function updateWeekFiles(weekId) {
+            const weekNumber = weekId.replace('week', '');
+            const weekFilesContainer = document.getElementById(`${weekId}-files`);
+            
+            if (!weekFilesContainer) return;
+            
+            weekFilesContainer.innerHTML = '';
+            
+            const weekFiles = uploadedFiles.filter(file => file.week === weekNumber);
+            
+            if (weekFiles.length === 0) {
+                weekFilesContainer.innerHTML = '<p>No hay archivos subidos para esta semana.</p>';
+                return;
+            }
+            
+            weekFiles.forEach(file => {
+                const fileCard = document.createElement('div');
+                fileCard.className = 'file-card';
+                
+                // Determinar el icono según el tipo de archivo
+                let fileIcon = 'fa-file';
+                let iconClass = '';
+                
+                if (file.type === 'application/pdf') {
+                    fileIcon = 'fa-file-pdf';
+                    iconClass = 'pdf-icon';
+                } else if (file.type === 'application/zip') {
+                    fileIcon = 'fa-file-archive';
+                    iconClass = 'zip-icon';
+                }
+                
+                fileCard.innerHTML = `
+                    <div class="file-icon ${iconClass}">
+                        <i class="fas ${fileIcon}"></i>
+                    </div>
+                    <div class="file-card-name">${file.name}</div>
+                    <button class="card-btn" onclick="downloadUploadedFile(${file.id})">Descargar</button>
+                `;
+                
+                weekFilesContainer.appendChild(fileCard);
+            });
+        }
+
         // Descargar un archivo subido
         function downloadUploadedFile(fileId) {
             const file = uploadedFiles.find(f => f.id === fileId);
             if (!file) return;
             
-            // Convertir data URL a blob
-            const byteString = atob(file.data.split(',')[1]);
-            const mimeString = file.data.split(',')[0].split(':')[1].split(';')[0];
-            const ab = new ArrayBuffer(byteString.length);
-            const ia = new Uint8Array(ab);
-            
-            for (let i = 0; i < byteString.length; i++) {
-                ia[i] = byteString.charCodeAt(i);
+            // Convertir base64 a Blob
+            const byteCharacters = atob(file.content.split(',')[1]);
+            const byteNumbers = new Array(byteCharacters.length);
+            for (let i = 0; i < byteCharacters.length; i++) {
+                byteNumbers[i] = byteCharacters.charCodeAt(i);
             }
+            const byteArray = new Uint8Array(byteNumbers);
+            const blob = new Blob([byteArray], { type: file.type });
             
-            const blob = new Blob([ab], { type: mimeString });
             const url = URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = url;
@@ -1671,6 +1842,7 @@
             document.body.appendChild(a);
             a.click();
             
+            // Limpiar
             setTimeout(() => {
                 document.body.removeChild(a);
                 URL.revokeObjectURL(url);
@@ -1683,11 +1855,26 @@
                 uploadedFiles = uploadedFiles.filter(f => f.id !== fileId);
                 localStorage.setItem('uploadedFiles', JSON.stringify(uploadedFiles));
                 updateFileList();
+                
+                // Actualizar también las vistas de semanas
+                for (let i = 1; i <= 8; i++) {
+                    const weekFilesContainer = document.getElementById(`week${i}-files`);
+                    if (weekFilesContainer) {
+                        updateWeekFiles(`week${i}`);
+                    }
+                }
             }
         }
     </script>
 </body>
 </html>
+
+
+
+
+
+
+
 
 
 
