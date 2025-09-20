@@ -917,6 +917,94 @@
             word-break: break-word;
         }
 
+         /* Estilos adicionales para la sección de GitHub */
+        .github-file-section {
+            margin-top: 30px;
+            padding: 20px;
+            background: rgba(30, 30, 30, 0.6);
+            border-radius: 10px;
+            border-left: 4px solid var(--primary-color);
+        }
+        
+        .github-file-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .github-file-item {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 15px;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: var(--transition);
+        }
+        
+        .github-file-item:hover {
+            transform: translateY(-5px);
+            background: rgba(0, 0, 0, 0.3);
+        }
+        
+        .file-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        
+        .pdf-icon {
+            color: #e74c3c;
+        }
+        
+        .zip-icon {
+            color: #f39c12;
+        }
+        
+        .file-name {
+            text-align: center;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
+         /* Nuevos estilos para el botón de GitHub */
+        .github-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 25px;
+            background: #333;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: var(--transition);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            margin-top: 15px;
+        }
+        
+        .github-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            background: #555;
+        }
+        
+        .github-btn i {
+            margin-right: 10px;
+        }
+        
+        .github-section {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        
+
 
 
         /* Responsive Design */
@@ -1391,15 +1479,47 @@
             Bienvenido a la primera semana del curso de Desarrollo de Aplicaciones. En esta sección encontrarás todos los recursos necesarios para comenzar tu aprendizaje. Los materiales incluyen presentaciones, guías de instalación, ejercicios prácticos y material complementario de lectura.
         </p>
         
-       
-         <!-- Archivos subidos para esta semana -->
+        <div class="github-file-section">
+            <h3>Recursos disponibles para descargar:</h3>
+            <div class="github-file-list" id="github-files-week1">
+                <div class="github-file-item">
+                    <i class="fas fa-file-archive zip-icon file-icon"></i>
+                    <div class="file-name">Ejercicios Prácticos</div>
+                    <a href="https://github.com/GenisIsaac/TallerDesarroloAplicaciones/blob/main/semana1/ejercicio1.zip" 
+                       class="card-btn" download>
+                        <i class="fas fa-download"></i> Descargar
+                    </a>
+                </div>
+                
+                <div class="github-file-item">
+                    <i class="fas fa-file-pdf pdf-icon file-icon"></i>
+                    <div class="file-name">Apuntes de Clase</div>
+                    <a href="https://github.com/GenisIsaac/TallerDesarroloAplicaciones/tree/main/semana1/apuntes.pdf" 
+                       class="card-btn" download>
+                        <i class="fas fa-download"></i> Descargar
+                    </a>
+                </div>
+                
+                
+            </div>
+        </div>
+
+        <!-- Archivos subidos para esta semana -->
         <div class="week-files">
-            <h3>Archivos subidos para esta semana</h3>
+            <h3>Archivos  nuevos subidos para esta semana</h3>
             <div class="file-grid" id="week1-files">
                 <!-- Los archivos subidos para la semana 1 se mostrarán aquí -->
             </div>
         </div>
         
+        <!-- Enlace al repositorio completo -->
+        <div class="github-section">
+            <h3>¿Quieres ver todos los recursos?</h3>
+            <p>Visita nuestro repositorio de GitHub para acceder a todos los archivos y código fuente.</p>
+            <a href="https://github.com/TU_USUARIO/TU_REPOSITORIO" class="github-btn" target="_blank">
+                <i class="fab fa-github"></i> Ver repositorio completo
+            </a>
+        </div>
         
         <a href="#recursos" class="back-btn" onclick="showSection('recursos')">
             <i class="fas fa-arrow-left"></i> Volver a recursos
@@ -1415,6 +1535,23 @@
         <p class="week-intro">
             Bienvenido a la primera semana del curso de Desarrollo de Aplicaciones. En esta sección encontrarás todos los recursos necesarios para comenzar tu aprendizaje. Los materiales incluyen presentaciones, guías de instalación, ejercicios prácticos y material complementario de lectura.
         </p>
+        <div class="github-file-section">
+            <h3>Recursos disponibles para descargar:</h3>
+            <div class="github-file-list" id="github-files-week1">
+                <div class="github-file-item">
+                    <i class="fas fa-file-archive zip-icon file-icon"></i>
+                    <div class="file-name">Ejercicios Prácticos</div>
+                    <a href="https://github.com/GenisIsaac/TallerDesarroloAplicaciones/blob/main/semana2/semana2.zip" 
+                       class="card-btn" download>
+                        <i class="fas fa-download"></i> Descargar
+                    </a>
+                </div>
+                
+                
+                
+            </div>
+        </div>
+
         
        
          <!-- Archivos subidos para esta semana -->
@@ -1424,13 +1561,21 @@
                 <!-- Los archivos subidos para la semana 1 se mostrarán aquí -->
             </div>
         </div>
-        
+
+        <!-- Enlace al repositorio completo -->
+        <div class="github-section">
+            <h3>¿Quieres ver todos los recursos?</h3>
+            <p>Visita nuestro repositorio de GitHub para acceder a todos los archivos y código fuente.</p>
+            <a href="https://github.com/TU_USUARIO/TU_REPOSITORIO" class="github-btn" target="_blank">
+                <i class="fab fa-github"></i> Ver repositorio completo
+            </a>
+        </div>
         
         <a href="#recursos" class="back-btn" onclick="showSection('recursos')">
             <i class="fas fa-arrow-left"></i> Volver a recursos
         </a>
     </section>
-
+        
     <!-- Footer -->
      <footer>
         <div class="footer-content">
@@ -1890,6 +2035,51 @@
                 }
             }
         }
+        // Variable para la URL de GitHub (cambia esta URL por la de tu repositorio)
+        const GITHUB_REPO_URL = "https://github.com/GenisIsaac/TallerDesarroloAplicaciones/blob/main/ejercicio1.zip";
+        
+        // Función para actualizar los enlaces de GitHub
+        function updateGitHubLinks() {
+            document.querySelectorAll('.github-btn').forEach(btn => {
+                btn.href = GITHUB_REPO_URL;
+            });
+        }
+        
+        // Llamar a la función cuando se cargue la página
+        window.addEventListener('load', () => {
+            // [El resto del código de carga se mantiene igual]
+            updateGitHubLinks();
+        });
+
+        // Configuración de URLs de GitHub (personaliza estas variables)
+        const GITHUB_USER = 'GenisIsaac';
+        const GITHUB_REPO = 'TallerDesarroloAplicaciones';
+        const GITHUB_BRANCH = 'main'; // o 'master' según tu repositorio
+        
+        // Función para generar URLs de GitHub
+        function getGitHubFileUrl(filePath) {
+            return `https://github.com/${GITHUB_USER}/${GITHUB_REPO}/raw/${GITHUB_BRANCH}/${filePath}`;
+        }
+        
+        // Función para actualizar todos los enlaces de GitHub
+        function updateGitHubLinks() {
+            // Actualizar enlaces de descarga
+            document.querySelectorAll('[data-github-file]').forEach(link => {
+                const filePath = link.getAttribute('data-github-file');
+                link.href = getGitHubFileUrl(filePath);
+            });
+            
+            // Actualizar enlace al repositorio
+            const repoUrl = `https://github.com/${GITHUB_USER}/${GITHUB_REPO}`;
+            document.querySelectorAll('.github-btn').forEach(btn => {
+                btn.href = repoUrl;
+            });
+        }
+        
+        // Llamar a la función cuando se cargue la página
+        window.addEventListener('load', () => {
+            updateGitHubLinks();
+        });
     </script>
 </body>
 </html>
