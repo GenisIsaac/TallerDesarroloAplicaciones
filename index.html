@@ -1002,6 +1002,110 @@
             padding-top: 30px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
+/* Estilos para el logo con imagen */
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo-image {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(143, 148, 251, 0.3);
+            transition: var(--transition);
+            border: 2px solid rgba(143, 148, 251, 0.3);
+            background: linear-gradient(135deg, #8f94fb, #4e54c8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .logo-image img {
+            width: 80%;
+            height: 80%;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+        
+        .logo-image:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(143, 148, 251, 0.5);
+        }
+        
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .logo-main {
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            line-height: 1.2;
+        }
+        
+        .logo-sub {
+            font-size: 0.9rem;
+            color: #bbb;
+            font-weight: 400;
+            margin-top: 2px;
+        }
+        
+        /* Estilos para cuando la imagen no carga */
+        .logo-image::before {
+            content: "💻";
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+            color: white;
+        }
+        
+        .logo-image.loaded::before {
+            display: none;
+        }
+        
+        /* Responsive para el logo */
+        @media (max-width: 768px) {
+            .logo-image {
+                width: 40px;
+                height: 40px;
+            }
+            
+            .logo-main {
+                font-size: 1.4rem;
+            }
+            
+            .logo-sub {
+                font-size: 0.8rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .logo-container {
+                gap: 10px;
+            }
+            
+            .logo-image {
+                width: 35px;
+                height: 35px;
+            }
+            
+            .logo-main {
+                font-size: 1.2rem;
+            }
+            
+            .logo-sub {
+                font-size: 0.7rem;
+            }
 
         
 
@@ -1085,9 +1189,16 @@
 
     <!-- Header -->
     <header id="header">
-        <div class="logo">
-            <div class="logo-main">Desarrollo de Aplicaciones</div>
-            <div class="logo-sub">Paquiyauri Vivanco Genis Isaac</div>
+        <div class="logo-container">
+            <div class="logo-image">
+                <img src="proxy-image.png" 
+                     alt="Logo Desarrollo de Aplicaciones" 
+                     onload="this.parentElement.classList.add('loaded')">
+            </div>
+            <div class="logo-text">
+                <div class="logo-main">Desarrollo de Aplicaciones</div>
+                <div class="logo-sub">Paquiyauri Vivanco Genis Isaac</div>
+            </div>
         </div>
         
         <div class="nav-buttons" id="nav-buttons">
@@ -1648,6 +1759,71 @@
         </a>
     </section>
 
+    
+<!-- semana 4-->
+    <section id="week3" class="week-content">
+        <h2 class="week-title">Recursos - Semana 4</h2>
+        
+        <img src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="desarrollo de aplicaciones en java maven de la semna 3" class="week-image">
+        
+        <p class="week-intro">
+            Bienvenido a la tercera semana del curso de Desarrollo de Aplicaciones. En esta sección encontrarás todos los recursos necesarios para continuar tu aprendizaje. Los materiales incluyen presentaciones, guías de instalación, ejercicios prácticos y material complementario de lectura.
+        </p>
+        
+        <div class="github-file-section">
+            <h3>Recursos disponibles para descargar:</h3>
+            <div class="github-file-list" id="github-files-week4">
+                <div class="github-file-item">
+                    <i class="fas fa-file-archive zip-icon file-icon"></i>
+                    <div class="file-name">Ejercicios Prácticos</div>
+                    <a href="https://github.com/GenisIsaac/TallerDesarroloAplicaciones/blob/main/semana4/semana4.zip" 
+                       class="card-btn" download>
+                        <i class="fas fa-download"></i> Descargar
+                    </a>
+                </div>
+                
+                <div class="github-file-item">
+                    <i class="fas fa-file-archive zip-icon file-icon"></i>
+                    <div class="file-name">Apuntes de Clase</div>
+                    <a href="https://github.com/GenisIsaac/TallerDesarroloAplicaciones/blob/main/semana4/semana4Ejercicio2.zip" 
+                       class="card-btn" download>
+                        <i class="fas fa-download"></i> Descargar
+                    </a>
+                </div>
+                
+                 <div class="github-file-item">
+                    <i class="fas fa-file-pdf pdf-icon file-icon"></i>
+                    <div class="file-name">Apuntes de Clase</div>
+                    <a href="https://github.com/GenisIsaac/TallerDesarroloAplicaciones/tree/main/semana4/Semana04_Aplicaciones.exe" 
+                       class="card-btn" download>
+                        <i class="fas fa-download"></i> Descargar
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Archivos subidos para esta semana -->
+        <div class="week-files">
+            <h3>Archivos  nuevos subidos para esta semana</h3>
+            <div class="file-grid" id="week4-files">
+                <!-- Los archivos subidos para la semana 1 se mostrarán aquí -->
+            </div>
+        </div>
+        
+        <!-- Enlace al repositorio completo -->
+        <div class="github-section">
+            <h3>¿Quieres ver todos los recursos?</h3>
+            <p>Visita nuestro repositorio de GitHub para acceder a todos los archivos y código fuente.</p>
+            <a href="https://github.com/TU_USUARIO/TU_REPOSITORIO" class="github-btn" target="_blank">
+                <i class="fab fa-github"></i> Ver repositorio completo
+            </a>
+        </div>
+        
+        <a href="#recursos" class="back-btn" onclick="showSection('recursos')">
+            <i class="fas fa-arrow-left"></i> Volver a recursos
+        </a>
+    </section>
+
         
     <!-- Footer -->
      <footer>
@@ -2152,10 +2328,15 @@
         // Llamar a la función cuando se cargue la página
         window.addEventListener('load', () => {
             updateGitHubLinks();
+        }); // Llamar a la función cuando se cargue la página
+        window.addEventListener('load', () => {
+            updateGitHubLinks();
         });
+        
     </script>
 </body>
 </html>
+
 
 
 
