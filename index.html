@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap">
     <style>
         /* Variables CSS para tema oscuro */
-        :root {
+      :root {
             --primary-color: #8f94fb73;
             --secondary-color: #4e54c82d;
             --accent-color: #ff6b6ba1;
@@ -152,7 +152,7 @@
             color: var(--text-color);
         }
 
-        /* Hero Section */
+        /* Hero Section - MEJORADA */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -167,6 +167,44 @@
         .hero-content {
             max-width: 900px;
             z-index: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Logo destacado en el hero */
+        .hero-logo {
+            width: 200px;
+            height: 200px;
+            margin-bottom: 30px;
+            border-radius: 50%;
+            background: var(--gradient);
+            padding: 15px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+            animation: float 6s ease-in-out infinite;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 50%;
+            filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.3));
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-15px);
+            }
+            100% {
+                transform: translateY(0px);
+            }
         }
 
         .hero-title {
@@ -793,6 +831,12 @@
                 width: 100%;
                 height: 250px; /* Ajuste de altura para móviles */
             }
+            
+            /* Responsive para el hero-logo */
+            .hero-logo {
+                width: 150px;
+                height: 150px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -826,6 +870,11 @@
             .logo-container {
                 gap: 10px;
             }
+            
+            .hero-logo {
+                width: 120px;
+                height: 120px;
+            }
         }
     </style>
 </head>
@@ -856,9 +905,12 @@
     </button>
   </header>
     <!-- Sección de Inicio -->
-    <section id="inicio" class="section active">
+   <section id="inicio" class="section active">
         <div class="hero">
             <div class="hero-content">
+                <div class="hero-logo">
+                    <img src="proxy-image.png" alt="Logo Desarrollo de Aplicaciones">
+                </div>
                 <h1 class="hero-title">Desarrollo de Aplicaciones</h1>
                 <p class="hero-subtitle">Plataforma de recursos académicos organizados por semanas</p>
                 <button class="cta-btn" onclick="showSection('recursos')">Explorar Recursos</button>
@@ -1586,7 +1638,7 @@
             <div class="github-file-list" id="github-files-week6">
                 <div class="github-file-item">
                     <i class="fas fa-file-archive docx-icon file-icon"></i>
-                    <div class="file-name">proyecto</div>
+                    <div class="file-name">descripcion del proyecto</div>
                     <a href="https://github.com/GenisIsaac/TallerDesarroloAplicaciones/blob/main/semana7/Proyecto.docx" 
                        class="card-btn" download>
                         <i class="fas fa-download"></i> Descargar
@@ -1594,7 +1646,7 @@
                 </div>
                 
                 <div class="github-file-item">
-                    <i class="fas fa-file-pdf pdf-icon file-icon"></i>
+                    <i class="fas fa-file-sql sql-icon file-icon"></i>
                     <div class="file-name">Base de datos del proyecto</div>
                     <a href="https://github.com/GenisIsaac/TallerDesarroloAplicaciones/blob/main/semana7/bd.sql" 
                        class="card-btn" download>
@@ -1605,7 +1657,7 @@
                 <div class="github-file-list" id="github-files-week6">
                 <div class="github-file-item">
                     <i class="fas fa-file-archive zip-icon file-icon"></i>
-                    <div class="file-name">proyecto</div>
+                    <div class="file-name">Proyecto-StudyMind</div>
                     <a href="https://github.com/GenisIsaac/TallerDesarroloAplicaciones/blob/main/semana7/StudyMind.zip" 
                        class="card-btn" download>
                         <i class="fas fa-download"></i> Descargar
@@ -1794,6 +1846,7 @@
     </script>
 </body>
 </html>
+
 
 
 
