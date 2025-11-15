@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Sistema Académico</title>
+    <title>Login - Sistema AcadÃ©mico</title>
     <style>
         /* Estilos CSS proporcionados y modificados */
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
@@ -511,14 +511,14 @@
 </head>
 <body>
     <div class="main-container">
-        <!-- Presentación con Logo (izquierda) -->
+        <!-- PresentaciÃ³n con Logo (izquierda) -->
         <div class="presentation-section">
             <div class="logo-container">
-                <img src="upla.png" alt="Logo del Sistema Académico" class="logo">
+                <img src="upla.png" alt="Logo del Sistema AcadÃ©mico" class="logo">
             </div>
-            <h1 class="presentation-title">Sistema Académico Integral</h1>
+            <h1 class="presentation-title">Sistema AcadÃ©mico Integral</h1>
             <p class="presentation-text">
-                Bienvenido a nuestra plataforma académica integral. Accede a herramientas avanzadas para estudiantes, docentes y administradores, diseñadas para optimizar el proceso de enseñanza y aprendizaje.
+                Bienvenido a nuestra plataforma acadÃ©mica integral. Accede a herramientas avanzadas para estudiantes, docentes y administradores, diseÃ±adas para optimizar el proceso de enseÃ±anza y aprendizaje.
             </p>
             
             <ul class="features-list">
@@ -526,13 +526,13 @@
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                     </svg>
-                    Gestión académica simplificada
+                    GestiÃ³n acadÃ©mica simplificada
                 </li>
                 <li>
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                     </svg>
-                    Comunicación en tiempo real
+                    ComunicaciÃ³n en tiempo real
                 </li>
                 <li>
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -549,7 +549,7 @@
             <div class="card">
                 <div class="text-center mb-8">
                     <h2 class="text-3xl font-bold text-primary mb-2">Acceso al Sistema</h2>
-                    <p class="text-gray-600">Inicia sesión con tu cuenta</p>
+                    <p class="text-gray-600">Inicia sesiÃ³n con tu cuenta</p>
                 </div>
                 
                 <!-- Selector de Rol -->
@@ -587,8 +587,8 @@
                     </div>
                     
                     <div>
-                        <label for="password" class="block text-sm font-medium text-gray-700 mb-1">Contraseña</label>
-                        <input type="password" id="password" class="form-input w-full" placeholder="Ingresa tu contraseña" required>
+                        <label for="password" class="block text-sm font-medium text-gray-700 mb-1">ContraseÃ±a</label>
+                        <input type="password" id="password" class="form-input w-full" placeholder="Ingresa tu contraseÃ±a" required>
                     </div>
                     
                     <div class="flex items-center justify-between">
@@ -596,16 +596,16 @@
                             <input type="checkbox" id="remember" class="w-4 h-4 text-primary rounded focus:ring-primary border-gray-300">
                             <label for="remember" class="ml-2 text-sm text-gray-600">Recordarme</label>
                         </div>
-                        <a href="#" class="text-sm text-primary hover:underline">¿Olvidaste tu contraseña?</a>
+                        <a href="#" class="text-sm text-primary hover:underline">Â¿Olvidaste tu contraseÃ±a?</a>
                     </div>
                     
-                    <button type="submit" id="login-btn" class="btn-primary w-full">Iniciar Sesión</button>
+                    <button type="submit" id="login-btn" class="btn-primary w-full">Iniciar SesiÃ³n</button>
                 </form>
                 
                 <div class="mt-6 text-center">
                     <p class="text-sm text-gray-600">
-                        ¿No tienes una cuenta? 
-                        <a href="#" class="text-primary font-medium hover:underline">Regístrate</a>
+                        Â¿No tienes una cuenta? 
+                        <a href="#" class="text-primary font-medium hover:underline">RegÃ­strate</a>
                     </p>
                 </div>
             </div>
@@ -618,7 +618,7 @@
             const loginBtn = document.getElementById('login-btn');
             let selectedRole = 'docente'; // Valor por defecto
             
-            // Manejar la selección de roles
+            // Manejar la selecciÃ³n de roles
             roleButtons.forEach(button => {
                 button.addEventListener('click', function() {
                     // Remover clase activa de todos los botones
@@ -627,19 +627,19 @@
                         btn.classList.add('border-gray-200', 'bg-white', 'text-gray-700');
                     });
                     
-                    // Añadir clase activa al botón seleccionado
+                    // AÃ±adir clase activa al botÃ³n seleccionado
                     this.classList.remove('border-gray-200', 'bg-white', 'text-gray-700');
                     this.classList.add('active', 'border-primary', 'bg-primary-50', 'text-primary');
                     
                     // Actualizar rol seleccionado
                     selectedRole = this.id.replace('role-', '');
                     
-                    // Actualizar texto del botón de login según el rol
+                    // Actualizar texto del botÃ³n de login segÃºn el rol
                     updateLoginButton();
                 });
             });
             
-            // Actualizar el texto del botón de login según el rol
+            // Actualizar el texto del botÃ³n de login segÃºn el rol
             function updateLoginButton() {
                 let buttonText = '';
                 let buttonClass = '';
@@ -662,12 +662,12 @@
                 // Remover clases anteriores
                 loginBtn.classList.remove('btn-primary', 'btn-secondary', 'btn-accent');
                 
-                // Añadir nueva clase y texto
+                // AÃ±adir nueva clase y texto
                 loginBtn.classList.add(buttonClass);
                 loginBtn.textContent = buttonText;
             }
             
-            // Manejar el envío del formulario
+            // Manejar el envÃ­o del formulario
             document.getElementById('login-form').addEventListener('submit', function(e) {
                 e.preventDefault();
                 
@@ -675,17 +675,17 @@
                 const password = document.getElementById('password').value;
                 const remember = document.getElementById('remember').checked;
                 
-                // Aquí iría la lógica de autenticación
-                console.log(`Iniciando sesión como ${selectedRole}`);
+                // AquÃ­ irÃ­a la lÃ³gica de autenticaciÃ³n
+                console.log(`Iniciando sesiÃ³n como ${selectedRole}`);
                 console.log(`Usuario: ${username}`);
-                console.log(`Contraseña: ${password}`);
+                console.log(`ContraseÃ±a: ${password}`);
                 console.log(`Recordar: ${remember}`);
                 
-                // Redireccionar según el rol seleccionado
+                // Redireccionar segÃºn el rol seleccionado
                 redirectByRole(selectedRole);
             });
             
-            // Función para redireccionar según el rol
+            // FunciÃ³n para redireccionar segÃºn el rol
             function redirectByRole(role) {
                 let redirectUrl = '';
                 
@@ -703,12 +703,12 @@
                         redirectUrl = 'dashboard.html';
                 }
                 
-                // Redirección a la página correspondiente
-                // En un entorno real, esto se haría después de validar las credenciales
+                // RedirecciÃ³n a la pÃ¡gina correspondiente
+                // En un entorno real, esto se harÃ­a despuÃ©s de validar las credenciales
                 window.location.href = redirectUrl;
             }
             
-            // Inicializar el botón de login
+            // Inicializar el botÃ³n de login
             updateLoginButton();
         });
     </script>
